@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<h1> Records Table </h1>
+    <nav class="navbar navbar-expand-sm bg-light">
+
+        <div class="container-fluid">
+          <!-- Links -->
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'record_new'  %}">Create New record</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'main_page'%}">Back to main page </a>
+            </li>
+          </ul>
+        </div>
+      
+      </nav>
+<style>
+#record {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 80%;
+    }
+      
+#record td, #disease_codes th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+      
+#record tr:nth-child(even){background-color: #f2f2f2;}
+      
+#record tr:hover {background-color: #ddd;}
+      
+#record th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #04AA6D;
+    color: white;
+}
+
+</style>
+<body>
+<table id = "record">
+    <thead class="table-dark">
+        <tr> 
+            <th> Record by </th>
+            <th> Recorded country </th>
+            <th> Recorded disease </th>
+            <th> Functions </th>
+        </tr>
+    </thead>
+    {% for record in object_list %}
+    <tr>
+        <td>
+            {{record.email.email}}
+        </td>
+        <td>
+            {{record.cname}}
+        </td>
+        <td>
+            {{record.disease_code.disease_code}}
+        </td>
+        <td class='display-flex justify-content-betweeen'>
+            <a href="{% url 'record_detail' record.pk %}">View Details |</a>
+            <a href="{% url 'record_delete' record.pk %}">Delete |</a>
+            <a href="{% url 'record_edit' record.pk %}">Edit |</a>
+        </td>
+    </tr>
+{% endfor %}
+</table>
+</body>
+</html>

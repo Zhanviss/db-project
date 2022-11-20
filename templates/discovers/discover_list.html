@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
+        <h1> Discovers Table </h1>
+        <nav class="navbar navbar-expand-sm bg-light">
+    
+            <div class="container-fluid">
+              <!-- Links -->
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'discover_new' %}">Create New Discover </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'main_page'%}">Back to main page </a>
+                </li>
+              </ul>
+            </div>
+          
+          </nav>
+<style>
+#discovers {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 80%;
+    }
+      
+#discovers td, #discovers th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+      
+#discovers tr:nth-child(even){background-color: #f2f2f2;}
+      
+#discovers tr:hover {background-color: #ddd;}
+      
+#discovers th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #04AA6D;
+    color: white;
+}
+display: flex
+</style>
+<body>
+<table id = "discovers">
+    <thead class="table-dark">
+    <tr> 
+        <th> Discovered Disease </th>
+        <th> Discovered Country </th>
+        <th> Functions </th>
+    </tr>
+</thead>
+    {% for discover in object_list %}
+    <tr>
+        <td>
+            {{discover.disease_code.disease_code}}
+        </td>
+        <td>
+            {{discover.cname}}
+        </td>
+        <td class='display-flex justify-content-betweeen'>
+            <a href="{% url 'discover_detail' discover.pk %}">View Details |</a>
+            <a href="{% url 'discover_delete' discover.pk %}">Delete |</a>
+            <a href="{% url 'discover_edit' discover.pk %}">Edit |</a>
+        </td>
+    </tr>
+{% endfor %}
+</table>
+</body>
+</html>

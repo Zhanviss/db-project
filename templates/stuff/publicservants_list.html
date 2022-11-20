@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
+        <h1> Public Servant Table </h1>
+        <nav class="navbar navbar-expand-sm bg-light">
+    
+            <div class="container-fluid">
+              <!-- Links -->
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'publicservant_new' %}">Create New Public Servant </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'main_page'%}">Back to main page </a>
+                </li>
+              </ul>
+            </div>
+          
+          </nav>
+<style>
+#publicservant {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 80%;
+    }
+      
+#publicservant td, #publicservant th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+      
+#publicservant tr:nth-child(even){background-color: #f2f2f2;}
+      
+#publicservant tr:hover {background-color: #ddd;}
+      
+#publicservant th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #04AA6D;
+    color: white;
+}
+display: flex
+</style>
+<body>
+<table id = "publicservant">
+    <thead class="table-dark">
+    <tr> 
+        <th> Public Servant Email </th>
+        <th> Functions </th>
+    </tr>
+</thead>
+    {% for publicservant in object_list %}
+    <tr>
+        <td>
+            {{publicservant.email}}
+        </td>
+        <td class='display-flex justify-content-betweeen'>
+            <a href="{% url 'publicservant_detail' publicservant.pk %}">View Details |</a>
+            <a href="{% url 'publicservant_delete' publicservant.pk %}">Delete |</a>
+            <a href="{% url 'publicservant_edit' publicservant.pk %}">Edit |</a>
+        </td>
+    </tr>
+{% endfor %}
+</table>
+</body>
+</html>

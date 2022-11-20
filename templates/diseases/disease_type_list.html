@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<h1> Disease Types </h1>
+    <nav class="navbar navbar-expand-sm bg-light">
+
+        <div class="container-fluid">
+          <!-- Links -->
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'disease_type_new'  %}">Create New Disease Type</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'main_page'%}">Back to main page </a>
+            </li>
+          </ul>
+        </div>
+      
+      </nav>
+<style>
+#disease_types {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 80%;
+    }
+      
+#disease_types td, #disease_codes th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+      
+#disease_types tr:nth-child(even){background-color: #f2f2f2;}
+      
+#disease_types tr:hover {background-color: #ddd;}
+      
+#disease_types th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #04AA6D;
+    color: white;
+}
+
+</style>
+<body>
+<table id = "disease_types">
+    <thead class="table-dark">
+        <tr> 
+            <th> Disease Types </th>
+            <th> Description </th>
+            <th> Functions </th>
+        </tr>
+    </thead>
+    {% for disease_type in object_list %}
+    <tr>
+        <td>
+            {{disease_type.did}}
+        </td>
+        <td>
+            {{disease_type.description}}
+        </td>
+        <td class='display-flex justify-content-betweeen'>
+            <a href="{% url 'disease_type_detail' disease_type.pk %}">View Details |</a>
+            <a href="{% url 'disease_type_delete' disease_type.pk %}">Delete |</a>
+            <a href="{% url 'disease_type_edit' disease_type.pk %}">Edit |</a>
+        </td>
+    </tr>
+{% endfor %}
+</table>
+</body>
+</html>
