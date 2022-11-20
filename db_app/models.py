@@ -45,7 +45,7 @@ class Diseasetype(models.Model):
     class Meta:
         db_table = 'diseasetype'
     def __str__(self) -> str:
-        return f'{self.did}'
+        return f'{self.did}' + f'{self.description}
 
 class Doctor(models.Model):
     email = models.ForeignKey('Users', models.CASCADE, db_column='email', primary_key=True)
