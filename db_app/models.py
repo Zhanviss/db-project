@@ -17,7 +17,7 @@ class Country(models.Model):
         return self.cname
 
 class Discover(models.Model):
-    cname = models.ForeignKey(Country, models.CASCADE, db_column='cname', verobse_name="Discovered Country")
+    cname = models.ForeignKey(Country, models.CASCADE, db_column='cname', verbose_name="Discovered Country")
     disease_code = models.ForeignKey('Disease', models.CASCADE, db_column='disease_code')
     first_enc_date = models.DateField(verbose_name="Discovered Date YYYY-MM-DD")
 
