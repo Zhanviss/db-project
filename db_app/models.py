@@ -8,7 +8,7 @@
 from django.db import models
 
 class Country(models.Model):
-    cname = models.CharField(primary_key=True, max_length=50, verbose_name= "Country Name)
+    cname = models.CharField(primary_key=True, max_length=50, verbose_name= "Country Name")
     population = models.BigIntegerField()
 
     class Meta:
