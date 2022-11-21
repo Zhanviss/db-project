@@ -8,7 +8,7 @@
 from django.db import models
 
 class Country(models.Model):
-    cname = models.CharField(primary_key=True, max_length=50)
+    cname = models.CharField(primary_key=True, max_length=50, verbose_name= "Country Name)
     population = models.BigIntegerField()
 
     class Meta:
@@ -30,7 +30,7 @@ class Disease(models.Model):
     disease_code = models.CharField(primary_key=True, max_length=50)
     pathogen = models.CharField(max_length=20)
     description = models.TextField(max_length=140)
-    dtid = models.ForeignKey('Diseasetype', models.CASCADE, db_column='dtid')
+    dtid = models.ForeignKey('Diseasetype', models.CASCADE, db_column='dtid', verbose_name="Disease Type")
 
     class Meta:
         db_table = 'disease'
