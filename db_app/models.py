@@ -27,7 +27,7 @@ class Discover(models.Model):
 
 
 class Disease(models.Model):
-    disease_code = models.TextField(primary_key=True, max_length=50)
+    disease_code = models.CharField(primary_key=True, max_length=50)
     pathogen = models.CharField(max_length=20)
     description = models.TextField(max_length=140)
     dtid = models.ForeignKey('Diseasetype', models.CASCADE, db_column='dtid')
