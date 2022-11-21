@@ -17,9 +17,9 @@ class Country(models.Model):
         return self.cname
 
 class Discover(models.Model):
-    cname = models.ForeignKey(Country, models.CASCADE, db_column='cname')
+    cname = models.ForeignKey(Country, models.CASCADE, db_column='cname', verobse_name="Discovered Country")
     disease_code = models.ForeignKey('Disease', models.CASCADE, db_column='disease_code')
-    first_enc_date = models.DateField()
+    first_enc_date = models.DateField(verbose_name="Discovered Date YYYY-MM-DD")
 
     class Meta:
         db_table = 'discover'
@@ -69,7 +69,7 @@ class Publicservant(models.Model):
 
 class Record(models.Model):
     email = models.ForeignKey(Publicservant, models.CASCADE, db_column='email')
-    cname = models.ForeignKey(Country, models.CASCADE, db_column='cname')
+    cname = models.ForeignKey(Country, models.CASCADE, db_column='cname', verbose_name="Country Name")
     disease_code = models.ForeignKey(Disease, models.CASCADE, db_column='disease_code')
     total_deaths = models.IntegerField()
     total_patients = models.IntegerField()
@@ -80,7 +80,7 @@ class Record(models.Model):
 
 
 class Specialize(models.Model):
-    sid = models.ForeignKey(Diseasetype, models.CASCADE, db_column='sid')
+    sid = models.ForeignKey(Diseasetype, models.CASCADE, db_column='sid', verbose_name= "Disease Type")
     email = models.ForeignKey(Doctor, models.CASCADE, db_column='email')
 
     class Meta:
@@ -94,7 +94,7 @@ class Users(models.Model):
     surname = models.CharField(max_length=40)
     salary = models.IntegerField()
     phone = models.CharField(max_length=20)
-    cname = models.ForeignKey(Country, models.CASCADE, db_column='cname')
+    cname = models.ForeignKey(Country, models.CASCADE, db_column='cname', verbose_name="Country Name")
 
     class Meta:
         db_table = 'users'
